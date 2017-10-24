@@ -341,6 +341,20 @@ Public Class P2Pool
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
+      'Perform a simple check on the wallet address
+        If Wallet_Address.Text.Count = 34 Then
+        Else
+            MsgBox("Vertcoin addresses are atleast 34 characters long, yours is not, please verify")
+            Exit Sub
+        End If
+
+        If Wallet_Address.Text.StartsWith("V") Then
+        Else
+            MsgBox("Vertcoin addresses start with a V, yours does not, please verify")
+            Exit Sub
+
+        End If
+
         Dim checkcount = 0
         Dim checkcount2 = 0
         For Each row As DataGridViewRow In DataGridView1.Rows
@@ -387,7 +401,6 @@ Public Class P2Pool
         Else
             MsgBox("Please enter a Wallet Address before adding pools.")
         End If
-
     End Sub
 
     Public Sub Loading_Start()
